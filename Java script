@@ -1,0 +1,14 @@
+const SUPABASE_URL = 'https://iukgeaudqjsshnmmrylo.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml1a2dlYXVkcWpzc2hubW1yeWxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0NjMxMjQsImV4cCI6MjA3NTAzOTEyNH0.-9zcEhG518PkrfyzyVpFcMViDRN7p80L601dRETnCMs';
+
+const { createClient } = supabase;
+const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Helper function to check for logged in user
+const checkUser = () => {
+    const user = _supabase.auth.user();
+    if (!user) {
+        window.location.href = 'index.html';
+    }
+    return user;
+};
